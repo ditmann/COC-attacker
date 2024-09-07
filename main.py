@@ -5,15 +5,18 @@ import random
 
 #søker etter bilde og klikker
 def finnBilde(navn):
-    x,y = pyautogui.locateCenterOnScreen(navn, confidence=0.8)
-    pyautogui.click(x,y)
+    try:
+        x,y = pyautogui.locateCenterOnScreen(navn,confidence=0.8)
+        pyautogui.click(x,y)
+    except:
+        finnBilde(navn)
 
 
 #prøver å klikke over troppene for å plassere
 def plyndring(navn):
     finnBilde(navn)
     x,y = pyautogui.position()
-    pyautogui.click(x,y-50,clicks=6,interval=random.randrange(3,5,))
+    pyautogui.click(x,y-55,clicks=6,interval=float(0.2))
 
 
 #ser etter EndBattle så tar deg tilbake til landsby
@@ -29,17 +32,18 @@ def EndComabat():
         time.sleep(1)
         finnBilde("Home.png")
 
+#ett helt angrep
+def EnRunde(): 
+    #starter runde  
+    finnBilde("attack.png")
+    finnBilde("Find now.png")
 
 
-#starter runde     
-finnBilde("attack.png")
-time.sleep(2)
-finnBilde("Find now.png")
-time.sleep(5)
+    #combat
+    plyndring("drage1.png")
 
+    #avslutter combat
+    EndComabat()
 
-#combat
-plyndring("drage1.png")
-
-#avslutter combat
-EndComabat()
+EnRunde()
+EnRunde()
