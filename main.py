@@ -43,11 +43,3 @@ plyndring("drage1.png")
 
 #avslutter combat
 EndComabat()
-
-
-
-
-
-
-
-
