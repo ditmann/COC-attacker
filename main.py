@@ -63,14 +63,11 @@ def samling():
         samling()
 
 
-try:
+while 1 == 1:
 
     while tidEleksir > 0:
         enRunde()
         tidEleksir = tidEleksir - 1
 
     samling()
-except KeyboardInterrupt:
-    pass
-
-
+    tidEleksir = 7
