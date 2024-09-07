@@ -13,7 +13,7 @@ def finnBilde(navn):
 def plyndring(navn):
     finnBilde(navn)
     x,y = pyautogui.position()
-    pyautogui.click(x,y-50,clicks=6,interval=random.randrange(0,5,1))
+    pyautogui.click(x,y-50,clicks=6,interval=random.randrange(3,5,))
 
 
 #ser etter EndBattle så tar deg tilbake til landsby
