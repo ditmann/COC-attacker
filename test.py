@@ -1,21 +1,7 @@
 import pyautogui
 
 
-while True:
-    try:
-
-        gaming = pyautogui.locateOnScreen("attack.png", confidence=0.7)
-        print("online")
-
-    
-
-    except:
-        print("offline")
-
-
-#if gaming != pyautogui.ImageNotFoundException:
-#        print("Nei")
-#else:
-#        print("ja")
-
+x,y = pyautogui.locateCenterOnScreen("caMidten.png", confidence=0.7)
+pyautogui.moveTo(x,y)
+pyautogui.dragTo(x,y+600,2)
 

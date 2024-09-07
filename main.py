@@ -2,21 +2,27 @@ import pyautogui
 import time
 import random
 
+#det tar 8 runder å tømme eleksir
+tidEleksir = int(7)
+
+
 
 #søker etter bilde og klikker
-def finnBilde(navn):
+def klikkBilde(navn):
     try:
         x,y = pyautogui.locateCenterOnScreen(navn,confidence=0.8)
         pyautogui.click(x,y)
     except:
-        finnBilde(navn)
+        klikkBilde(navn)
 
 
 #prøver å klikke over troppene for å plassere
 def plyndring(navn):
-    finnBilde(navn)
+    klikkBilde(navn)
     x,y = pyautogui.position()
-    pyautogui.click(x,y-55,clicks=6,interval=float(0.2))
+    pyautogui.click(x,y-55,clicks=7, interval=random.randint(1,5))
+    
+
 
 
 #ser etter EndBattle så tar deg tilbake til landsby
@@ -26,24 +32,45 @@ def EndComabat():
         time.sleep(7)
         EndComabat()
     except:
-        finnBilde("EndBattle.png")
-        time.sleep(1)
-        finnBilde("Okey.png")
-        time.sleep(1)
-        finnBilde("Home.png")
+        klikkBilde("EndBattle.png")
+        klikkBilde("Okey.png")
+        klikkBilde("Home.png")
 
 #ett helt angrep
-def EnRunde(): 
+def enRunde(): 
     #starter runde  
-    finnBilde("attack.png")
-    finnBilde("Find now.png")
+    klikkBilde("attack.png")
+    klikkBilde("Find now.png")
 
 
     #combat
-    plyndring("drage1.png")
+    plyndring("troop.png")
 
     #avslutter combat
     EndComabat()
 
-EnRunde()
-EnRunde()
+
+#samle eleksir
+def samling():
+    try:    
+        x,y = pyautogui.locateCenterOnScreen("caMidten.png", confidence=0.7)
+        pyautogui.moveTo(x,y)
+        pyautogui.dragTo(x,y+600,2)
+        klikkBilde("eleksirCart.png")
+        klikkBilde("Collect.png")
+        klikkBilde("X.png")
+    except:
+        samling()
+
+
+try:
+
+    while tidEleksir > 0:
+        enRunde()
+        tidEleksir = tidEleksir - 1
+
+    samling()
+except KeyboardInterrupt:
+    pass
+
+
