@@ -20,7 +20,7 @@ def klikkBilde(navn):
 def plyndring(navn):
     klikkBilde(navn)
     x,y = pyautogui.position()
-    pyautogui.click(x,y-55,clicks=7, interval=random.randint(1,5))
+    pyautogui.click(x,y-25,clicks=7, interval=random.randint(1,5))
     
 
 
@@ -28,23 +28,23 @@ def plyndring(navn):
 #ser etter EndBattle så tar deg tilbake til landsby
 def EndComabat():
     try:
-        pyautogui.locateOnScreen("Surrender.png",confidence=0.8)
+        pyautogui.locateOnScreen("HPSurrender.png",confidence=0.8)
         time.sleep(7)
         EndComabat()
     except:
-        klikkBilde("EndBattle.png")
-        klikkBilde("Okey.png")
-        klikkBilde("Home.png")
+        klikkBilde("HPEndBattle.png")
+        klikkBilde("HPOkey.png")
+        klikkBilde("HPHome.png")
 
 #ett helt angrep
 def enRunde(): 
     #starter runde  
-    klikkBilde("attack.png")
-    klikkBilde("Find now.png")
+    klikkBilde("HPattack.png")
+    klikkBilde("HPFind now.png")
 
 
     #combat
-    plyndring("troop.png")
+    plyndring("HPtroop.png")
 
     #avslutter combat
     EndComabat()
@@ -53,12 +53,12 @@ def enRunde():
 #samle eleksir
 def samling():
     try:    
-        x,y = pyautogui.locateCenterOnScreen("caMidten.png", confidence=0.7)
+        x,y = pyautogui.locateCenterOnScreen("HPcaMidten.png", confidence=0.7)
         pyautogui.moveTo(x,y)
         pyautogui.dragTo(x,y+600,2)
-        klikkBilde("eleksirCart.png")
-        klikkBilde("Collect.png")
-        klikkBilde("X.png")
+        klikkBilde("HPeleksirCart.png")
+        klikkBilde("HPCollect.png")
+        klikkBilde("HPX.png")
     except:
         samling()
 
