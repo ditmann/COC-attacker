@@ -3,7 +3,7 @@ import time
 import random
 
 #det tar 8 runder å tømme eleksir
-tidEleksir = int(7)
+tidEleksir = int(2)
 
 
 
